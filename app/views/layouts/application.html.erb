@@ -1,21 +1,28 @@
-<!-- START:head -->
 <!DOCTYPE html>
 <html>
 <head>
-<!-- START_HIGHLIGHT -->
   <title>Pragprog Books Online Store</title>
-<!-- END_HIGHLIGHT -->
   <%= stylesheet_link_tag "application" %><!-- <label id="code.slt"/> -->
   <%= javascript_include_tag "application" %><!-- <label id="code.jlt"/> -->
   <%= csrf_meta_tag %><!-- <label id="code.csrf"/> -->
 </head>
-<!-- END:head -->
+
 <body class="<%= controller.controller_name %>">
-<!-- START_HIGHLIGHT -->
+  <!-- START:i18n -->
   <div id="banner">
+<!-- START_HIGHLIGHT -->
+    <%= form_tag store_path, class: 'locale' do %>
+      <%= select_tag 'set_locale', 
+        options_for_select(LANGUAGES, I18n.locale.to_s),
+        onchange: 'this.form.submit()' %>
+      <%= submit_tag 'submit' %>
+      <%= javascript_tag "$('.locale input').hide()" %>
+    <% end %>
+<!-- END_HIGHLIGHT -->
     <%= image_tag("logo.png") %>
-    <%= @page_title || "Pragmatic Bookshelf" %><!-- <label id="code.depot.e.title"/> -->
+    <%= @page_title || t('.title') %>
   </div>
+<!-- END:i18n -->
   <div id="columns">
     <div id="side">
       <% if @cart %>
@@ -27,10 +34,10 @@
       <% end %>  
       
       <ul>
-        <li><a href="http://www....">Home</a></li>
-        <li><a href="http://www..../faq">Questions</a></li>
-        <li><a href="http://www..../news">News</a></li>
-        <li><a href="http://www..../contact">Contact</a></li>
+        <li><a href="http://www...."><%= t('.Home') %></a></li>
+        <li><a href="http://www..../faq"><faq%= t('.Questions') %></a></li>
+        <li><a href="http://www..../news"><%= t('.News') %></a></li>
+        <li><a href="http://www..../contact"><%= t('.Contact') %></a></li>
       </ul>
 
       <% if session[:user_id] %>
