@@ -3,7 +3,7 @@
 one:
   name: Dave Thomas
   address: 4 upton rd
-  email: dave@wendys.com
+  email: dave@example.com
   pay_type: Check
 
 two:

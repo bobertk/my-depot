@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+skip_before_filter :authorize
 
   # POST /orders
   # POST /orders.json

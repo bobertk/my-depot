@@ -1,9 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
-  password_digest: MyString
-  
+  name: dave
+  password_digest: <%= BCrypt::Password.create('secret') %>
+  # dynamically compute the value of hashed_password. Match up and use 
+  # the same function that Rails itself uses to compute the password
 two:
   name: MyString
   password_digest: MyString

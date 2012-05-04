@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  # no skip before_filer here - not public facing
 
   # POST /products
   # POST /products.json

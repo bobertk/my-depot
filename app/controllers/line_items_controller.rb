@@ -1,4 +1,5 @@
 class LineItemsController < ApplicationController
+skip_before_filter :authorize
 
   # POST /line_items
   # POST /line_items.json

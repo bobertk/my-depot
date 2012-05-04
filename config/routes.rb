@@ -1,4 +1,13 @@
 MyDepot::Application.routes.draw do
+  get 'admin' => 'admin#index'
+
+    # wrap session routes in a block and pass to controller() class method
+    controller :sessions do
+      get 'login' => :new
+      post 'login' => :create
+      delete 'logout' => :destroy
+    end
+
   resources :users
 
   # The priority is based upon order of creation:
